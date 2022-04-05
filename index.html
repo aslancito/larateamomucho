@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Puzzle Game</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/image-puzzle.css" rel="stylesheet" />
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/image-puzzle.js"></script>
+</head>
+<body>
+    <div id="collage">
+        <h2>rompecabezas x aslandokigames</h2>
+        <hr />
+        <div id="playPanel" style="padding:5px;display:none;">
+            <h3 id="imgTitle"></h3> <hr />
+            <div style="display:inline-block; margin:auto; width:95%; vertical-align:top;">
+                <ul id="sortable" class="sortable"></ul>
+                <div id="actualImageBox">
+                    <div id="stepBox">
+                        <div>intentos:</div><div class="stepCount">0</div>
+                    </div>
+                    <div id="timeBox">
+                        tiempo: <span id="timerPanel"></span> segundos
+                    </div>
+                    <img id="actualImage" />
+                    <div>resuelve el puzzle con base a la imagen.</div>
+                    <p id="levelPanel">
+                        <input type="radio" name="level" id="easy" checked="checked" value="3" /> <label for="easy">fácil</label>
+                        <input type="radio" name="level" id="medium" value="4" /> <label for="medium">maso</label>
+                        <input type="radio" name="level" id="hard" value="5" /> <label for="hard">difícil</label>
+						<input type="radio" name="level" id="veryhard" value="6" /> <label for="veryhard">extremo</label>
+                     </p> 
+                 <div>
+                        <button id="btnRule" type="button" class="btn" onclick="rules();">siguiente reto :p</button>
+                        <button id="newPhoto" type="button" class="btn">nada solo q te amo</button> 
+                        
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="gameOver" style="display:none;">
+            <div style="background-color: #dbd8d8; padding: 5px 10px 20px 10px; text-align: center; ">
+                <h2 style="text-align:center">vamoooos</h2>
+                lo que no sabías es que <br /> solo las lindas ganan.
+                <br />
+                intentos: <span class="stepCount">0</span> son muchos.
+                <br />
+                tiempo que tardaste: <span class="timeCount">0</span> segundos<br />
+                <div>
+                    <button type="button" onclick="window.location.reload(true);">jugar de nuevo</button> 
+                </div>
+            </div>
+        </div>
+
+        <script>
+            var images = [
+                { src: 'img/larideaslan.PNG', title: 'lari y ash en un campito' }
+               
+            ];
+
+            $(function () {
+                var gridSize = $('#levelPanel :radio:checked').val();
+                imagePuzzle.startGame(images, gridSize);
+                $('#newPhoto').click(function () {
+                    var gridSize = $('#levelPanel :radio:checked').val();
+                    imagePuzzle.startGame(images, gridSize);
+                });
+
+                $('#levelPanel :radio').change(function (e) {
+                    var gridSize = $(this).val();
+                    imagePuzzle.startGame(images, gridSize);
+                });
+            });
+            function rules() {
+                alert('ganaste porque evidentemente eres la mejor del mundo para todo y por eso me gustas. \nahora dale en aceptar para ganarte un beso.');
+         location.href = "http://04abril22.carrd.co/"
+            }
+        </script>
+    </div>
+</body>
+</html>
